@@ -2,11 +2,10 @@
 importStar - keep you __init__.py files up to date
 ==================================================
 Imagine...
-
 * you need all modules in a package imported
 * ... maybe because you want to access them via inspect.getmembers 
-* ... or want to do sth. like for module in package: ...
-* BUT:
+* ... or want to do sth. like ``for module in package: ...``
+BUT:
 * you are to lazy to update all your __init__.py
 * you dont want/can't to use automodinit <https://github.com/ned14/automodinit>
 * AND/OR you cannot use dynamic imports (maybe because you want to create an application with pyinstaller)
@@ -34,9 +33,10 @@ usage
 either:
 * use as a script:
 ``importstar [directorypath]``
-run importstar without further arguments or with *-h* or *--help* to see help
 
-* OR call function importStar.importstar.run(args)
+* to see help: run importstar without further arguments or with *-h* or *--help* 
+
+* OR call function importStar.importstar.run(args) directly
 
 
 result
@@ -52,7 +52,7 @@ in all __init__.py files that have the following comments::
 
 the result might look like::
 
-    #<<<importStarr
+    #<<<importStar
     import mod1
     import mod2
     import pkg1
