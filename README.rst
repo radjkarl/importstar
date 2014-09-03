@@ -45,11 +45,13 @@ result
 importstar add all modules and packages recursively within a given directory 
 
 in all __init__.py files that have the following comments::
+
     #<<<importStar
     [i will be substitued]
     #>>>importStar
 
 the result might look like::
+
     #<<<importStarr
     import mod1
     import mod2
