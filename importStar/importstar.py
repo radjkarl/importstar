@@ -34,12 +34,14 @@ def run(argv):
     if not os.path.exists(path):
         sys.exit("ERROR: given path '%s' not valid" %path)
     inits = findInit(path)
+    print 'found %s __init__.py files' %len(inits)
     for path in inits:
         start, stop, lines = findRange(path)
         if stop != None:
             modules = getModulesInDir(os.path.dirname(path))
             if modules:
-                modifyInit(path, lines, modules, start, stop)    
+                modifyInit(path, lines, modules, start, stop)
+    print 'done.'
 
 
 
@@ -71,7 +73,26 @@ def findRange(initpath):
 
 
 def getModulesInDir(path):
-    return [x.split('.')[0] for x in os.listdir(path) if x != '__init__.py' and not x.endswith('pyc')]
+    l = []
+    for x in os.listdir(path):
+    # do not import ... __init__.py files
+        if (x != '__init__.py' 
+                #... pyc-files
+                and not x.endswith('pyc') 
+                #... files that that with a number (would give import error)
+                and not x[0].isdigit()):
+            d = os.path.join(path,x) 
+            if os.path.isdir(d):
+                if not os.path.exists(
+                    os.path.join(d,'__init__.py')):
+                    #...folders without __init__.py files 
+                    continue
+            elif not x.endswith('py'):
+                # ... non py-files
+                continue
+            l.append(x.split('.')[0])
+    return l         
+    #return [x.split('.')[0] for x in os.listdir(path) if x != '__init__.py' and not x.endswith('pyc')]
 
 
 def modifyInit(initpath, lines, modules, start, stop):
