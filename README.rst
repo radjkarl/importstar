@@ -1,11 +1,15 @@
 ==================================================
 importStar - keep you __init__.py files up to date
 ==================================================
+
 Imagine...
+
 * you need all modules in a package imported
 * ... maybe because you want to access them via inspect.getmembers 
 * ... or want to do sth. like ``for module in package: ...``
+
 BUT:
+
 * you are to lazy to update all your __init__.py
 * you dont want/can't to use automodinit <https://github.com/ned14/automodinit>
 * AND/OR you cannot use dynamic imports (maybe because you want to create an application with pyinstaller)
@@ -17,14 +21,17 @@ install
 
 via pip
 -------
-*TODO*
+
+``pip install importStar``
 
 ubuntu or simular
 -----------------
+
 ``sudo python setup.py install``
 
 windows
 -------
+
 ``python setup.py install``
 
 
